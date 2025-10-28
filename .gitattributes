@@ -1,0 +1,20 @@
+# Normalize text files to LF in repo; Windows can still check out with CRLF if configured
+* text=auto
+
+# Enforce LF for source files
+*.js  text eol=lf
+*.ts  text eol=lf
+*.tsx text eol=lf
+*.jsx text eol=lf
+*.css text eol=lf
+*.scss text eol=lf
+*.html text eol=lf
+*.md  text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh  text eol=lf
+
+# Keep Windows-specific scripts with CRLF
+*.bat text eol=crlf
+*.cmd text eol=crlf

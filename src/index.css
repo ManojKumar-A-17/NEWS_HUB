@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* News Feed Design System - Professional & Modern */
+
+@layer base {
+  :root {
+    /* Light mode - Clean and professional */
+    --background: 210 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Trustworthy blue primary */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Soft gray secondary */
+    --secondary: 214 32% 91%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    /* Vibrant accent for highlights */
+    --accent: 31 100% 51%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 88%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* News-specific tokens */
+    --news-header: 217 91% 60%;
+    --news-category: 31 100% 51%;
+    --news-shadow: 217 25% 50%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-accent: linear-gradient(135deg, hsl(31 100% 51%), hsl(31 100% 61%));
+    --gradient-hero: linear-gradient(180deg, hsl(217 91% 60% / 0.1), hsl(217 91% 60% / 0));
+    
+    /* Shadows */
+    --shadow-card: 0 2px 8px hsl(217 25% 50% / 0.08);
+    --shadow-card-hover: 0 8px 24px hsl(217 25% 50% / 0.12);
+    --shadow-elegant: 0 4px 16px hsl(217 25% 50% / 0.1);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    /* Dark mode - Sophisticated and easy on eyes */
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 65%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 31 100% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 65%;
+
+    /* Dark mode specific */
+    --news-header: 217 91% 65%;
+    --news-category: 31 100% 55%;
+    --news-shadow: 217 25% 20%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 65%), hsl(217 91% 75%));
+    --gradient-accent: linear-gradient(135deg, hsl(31 100% 55%), hsl(31 100% 65%));
+    --gradient-hero: linear-gradient(180deg, hsl(217 91% 65% / 0.1), hsl(217 91% 65% / 0));
+    
+    --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover: 0 8px 24px hsl(0 0% 0% / 0.4);
+    --shadow-elegant: 0 4px 16px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  .news-card {
+    @apply bg-card rounded-lg overflow-hidden transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .news-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    @apply scale-[1.02];
+  }
+
+  .category-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold;
+    @apply transition-all duration-200;
+  }
+
+  .search-input {
+    @apply w-full px-4 py-3 rounded-lg bg-card border-2 border-border;
+    @apply focus:border-primary focus:ring-2 focus:ring-primary/20;
+    @apply transition-all duration-200 outline-none;
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-muted rounded;
+  }
+}
