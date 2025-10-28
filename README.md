@@ -6,6 +6,8 @@
 
 # NewsHub — React + Tailwind News Feed App
 
+[![CI](https://github.com/ManojKumar-A-17/NEWS_HUB/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ManojKumar-A-17/NEWS_HUB/actions/workflows/ci.yml)
+
 Modern, responsive news feed built with React, Vite, TypeScript, Tailwind, shadcn/ui, and TanStack Query. It fetches live articles from the GNews API and includes search, category filters, loading/error states, theme toggle, and Read Aloud.
 
 ## Features
@@ -83,6 +85,11 @@ You can deploy to Vercel or Netlify for free.
 	- Publish directory: `dist`
 	- Environment Variable: `VITE_GNEWS_API_KEY`
 	- Deploy
+
+	After deploy, add your live URL here:
+
+	- Live: <YOUR_DEPLOYED_URL>
+	- Repo: https://github.com/ManojKumar-A-17/NEWS_HUB
 
 ## Tech stack
 
