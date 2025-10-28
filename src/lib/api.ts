@@ -27,17 +27,14 @@ export const fetchNews = async (
   limit: number = 10
 ): Promise<GNewsResponse> => {
   try {
-    const API_KEY = (import.meta as any).env?.VITE_GNEWS_API_KEY as string | undefined;
-    if (!API_KEY) {
-      throw new Error(
-        "Missing GNews API key. Create a .env file with VITE_GNEWS_API_KEY=your_key from gnews.io"
-      );
-    }
+  const API_KEY = (import.meta as any).env?.VITE_GNEWS_API_KEY as string | undefined;
+  const IS_PROD = Boolean((import.meta as any).env?.PROD);
+  // In production, prefer serverless function to avoid CORS and hide keys
+  const USE_SERVER = IS_PROD || !API_KEY;
 
     // Helper to build params for a given page
     const buildParams = (page: number) => {
       const params = new URLSearchParams({
-        apikey: API_KEY,
         lang: "en",
         max: String(Math.min(10, Math.max(1, limit))),
         page: String(page),
@@ -48,6 +45,8 @@ export const fetchNews = async (
       } else if (query && query !== "latest") {
         params.append("q", query);
       }
+      // Only include apikey when calling GNews directly
+      if (!USE_SERVER && API_KEY) params.append("apikey", API_KEY);
       return params;
     };
 
@@ -68,13 +67,27 @@ export const fetchNews = async (
     const aggregated: NewsArticle[] = [];
 
     for (let page = 1; page <= pagesNeeded; page++) {
-      const url = `${BASE_URL}${endpoint}?${buildParams(page).toString()}`;
+      let url = "";
+      const params = buildParams(page);
+
+      if (!USE_SERVER && API_KEY) {
+        // Direct call to GNews if a client-side key is provided
+        url = `${BASE_URL}${endpoint}?${params.toString()}`;
+      } else {
+        // Use Netlify function to keep the key secret
+        // Do not pass apikey in params; function adds it from server env
+        params.delete("apikey");
+        url = `/.netlify/functions/fetchNews?${params.toString()}`;
+      }
+
       const response = await fetch(url);
 
       if (!response.ok) {
         if (response.status === 403) {
           throw new Error(
-            "Invalid or unauthorized API key. Set VITE_GNEWS_API_KEY in your .env (get one free at gnews.io)."
+            API_KEY
+              ? "Invalid or unauthorized API key. Set VITE_GNEWS_API_KEY in your .env (get one free at gnews.io)."
+              : "Unauthorized calling Netlify function. Ensure GNEWS_API_KEY is set in your Netlify site env."
           );
         }
         if (response.status === 429) {
