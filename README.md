@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/7e4ebb01-6bec-426a-9355-ce8fe793e444
+**URL**: https://newsnub.netlify.app/
 
 # NewsHub — React + Tailwind News Feed App
 
