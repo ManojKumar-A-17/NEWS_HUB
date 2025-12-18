@@ -23,7 +23,7 @@ Modern, responsive news feed built with React, Vite, TypeScript, Tailwind, shadc
 ## Quick start
 
 1) Prerequisites
-- Node.js 18+ and npm
+- Node.js version 18+ and npm
 - A free GNews API key: https://gnews.io/
 
 2) Setup
@@ -88,7 +88,7 @@ You can deploy to Vercel or Netlify for free.
 
 	After deploy, add your live URL here:
 
-	- Live: <YOUR_DEPLOYED_URL>
+	- Live: https://newsnub.netlify.app/
 	- Repo: https://github.com/ManojKumar-A-17/NEWS_HUB
 
 ## Tech stack
