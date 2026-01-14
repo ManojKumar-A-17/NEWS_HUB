@@ -106,7 +106,3 @@ You can deploy to Vercel or Netlify for free.
 
 - Free GNews tier has rate limits; if you see 429 errors, wait or upgrade.
 - For “latest” with no category, the app uses the `top-headlines` endpoint. For keyword searches it uses the `search` endpoint.
-
-## License
-
-This project is for the AppDost assignment. Feel free to reuse with attribution.
