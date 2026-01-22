@@ -31,7 +31,7 @@ git clone <your_repo_url>
 cd feed-chronicle-main
 npm install
 
-# Create your env file
+# Create your env file make it safe
 Copy-Item .env.example .env
 # Then open .env and paste your API key
 # VITE_GNEWS_API_KEY=your_key_here
